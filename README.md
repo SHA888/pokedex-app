@@ -1,7 +1,7 @@
 # Pokedex Marketplace
 
-[Portfolio Personal](https://img.shields.io/badge/Portfolio-personal-blue)
-[Expect errors](https://img.shields.io/badge/Expect-errors-orange)
+![Portfolio Personal](https://img.shields.io/badge/Portfolio-personal-blue)
+![Expect errors](https://img.shields.io/badge/Expect-errors-orange)
 
 A marketplace of Pokémon, built as a client-side JavaScript webapp. Powered by [Pokedex.org](https://github.com/nolanlawson/pokedex.org).
 
