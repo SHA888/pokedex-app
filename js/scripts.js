@@ -3,7 +3,7 @@ let pokemonList = [
     id: 1,
     name: "Bulbasaur",
     types: ["grass", "poison"],
-    heights: 70,
+    height: 70,
     weight: 6.9,
   },
   {
@@ -21,3 +21,9 @@ let pokemonList = [
     weight: 9,
   },
 ];
+
+for (let i = 0; i < pokemonList.length; i++) {
+  document.write(
+    pokemonList[i].name + " (height: " + pokemonList[i].height + ")<br>"
+  );
+}
