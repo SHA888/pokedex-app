@@ -24,7 +24,10 @@ let pokemonRepository = (function () {
   ];
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    // I'm not sure about this
+    if (typeof pokemonList === "object") {
+      pokemonList.push(pokemon);
+    }
   }
 
   function getAll() {
@@ -44,3 +47,7 @@ pokemonRepository.getAll().forEach(function (pokemon) {
   }
   document.write(`<p>${pokemon.name} (height: ${pokemon.height})${wow}<p>`);
 });
+
+// I don't think these what are expected :(
+console.log(typeof pokemonRepository.getAll());
+console.log(Object.keys(pokemonRepository.getAll()));
