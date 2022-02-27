@@ -24,7 +24,6 @@ let pokemonRepository = (function () {
   ];
 
   function add(pokemon) {
-    // I'm not sure about this
     if (typeof pokemonList === "object") {
       pokemonList.push(pokemon);
     }
@@ -34,20 +33,37 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    // console.log(pokemonList.innerText);
+    // pokemonList.innerText = "Pokemon List";
+    // console.log(pokemonList.innerText);
+
+    let listItem = document.createElement("li");
+    // listItem.innerText = "List Item";
+    // console.log(listItem.innerText);
+
+    let button = document.createElement("button");
+    // button.innerText = "Button";
+    button.innerText = pokemon.name;
+    // console.log(button.innerText);
+
+    button.classList.add("pokemon-name");
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+  }
+
   return {
     add: add,
     getAll: getAll,
+    addListItem: addListItem,
   };
 })();
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-  let wow = "";
-  if (pokemon.height > 60) {
-    wow = " - Wow, that's huge!";
-  }
-  document.write(`<p>${pokemon.name} (height: ${pokemon.height})${wow}<p>`);
+  pokemonRepository.addListItem(pokemon);
+  // console.log(pokemon);
 });
 
-// I don't think these what are expected :(
-console.log(typeof pokemonRepository.getAll());
-console.log(Object.keys(pokemonRepository.getAll()));
+// console.log(typeof pokemonRepository.getAll());
+// console.log(Object.keys(pokemonRepository.getAll()));
