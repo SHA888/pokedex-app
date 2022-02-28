@@ -1,5 +1,6 @@
 let pokemonRepository = (function () {
   let pokemonList = [
+    // List of pokemons
     {
       id: 1,
       name: "Bulbasaur",
@@ -86,16 +87,19 @@ let pokemonRepository = (function () {
     },
   ];
 
+  // Add function
   function add(pokemon) {
     if (typeof pokemonList === "object") {
       pokemonList.push(pokemon);
     }
   }
 
+  // Get function
   function getAll() {
     return pokemonList;
   }
 
+  // Function to create button list of pokemons.
   function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     // console.log(pokemonList.innerText);
@@ -114,10 +118,23 @@ let pokemonRepository = (function () {
     button.classList.add("pokemon-name");
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
+    showPokemonDetails(button, pokemon);
   }
 
+  // Function to show pokemon's details when the button is clicked.
   function showDetails(pokemon) {
-    console.log(pokemon);
+    console.log("id: ", pokemon.id);
+    console.log("name: ", pokemon.name);
+    console.log("type: ", pokemon.types);
+    console.log("height: ", pokemon.height);
+    console.log("weight: ", pokemon.weight);
+  }
+
+  // Function of button's click event listener
+  function showPokemonDetails(button, pokemon) {
+    button.addEventListener("click", function () {
+      showDetails(pokemon);
+    });
   }
 
   return {
@@ -128,6 +145,7 @@ let pokemonRepository = (function () {
   };
 })();
 
+// Show pokemon list button on the document
 pokemonRepository.getAll().forEach(function (pokemon) {
   pokemonRepository.addListItem(pokemon);
   // console.log(pokemon);
