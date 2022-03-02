@@ -1,91 +1,6 @@
 let pokemonRepository = (function () {
-  let pokemonList = [
-    // List of pokemons
-    {
-      id: 1,
-      name: "Bulbasaur",
-      types: ["grass", "poison"],
-      height: 0.7,
-      weight: 6.9,
-    },
-    {
-      id: 2,
-      name: "Ivysaur",
-      types: ["grass", "poison"],
-      height: 1,
-      weight: 13,
-    },
-    {
-      id: 3,
-      name: "Venusaur",
-      types: ["grass", "poison"],
-      height: 2,
-      weight: 100,
-    },
-    {
-      id: 4,
-      name: "Charmander",
-      types: "fire",
-      height: 0.6,
-      weight: 8.5,
-    },
-    {
-      id: 5,
-      name: "Charmeleon",
-      types: "fire",
-      height: 1.1,
-      weight: 19,
-    },
-    {
-      id: 6,
-      name: "Charizard",
-      types: ["fire", "flying"],
-      height: 1.7,
-      weight: 90.5,
-    },
-    {
-      id: 7,
-      name: "Squirtle",
-      types: "water",
-      height: 0.5,
-      weight: 9,
-    },
-    {
-      id: 8,
-      name: "Wartorle",
-      types: "water",
-      height: 1,
-      weight: 22.5,
-    },
-    {
-      id: 9,
-      name: "Blastoise",
-      types: "water",
-      height: 1.6,
-      weight: 85.5,
-    },
-    {
-      id: 10,
-      name: "Caterpie",
-      types: "bug",
-      height: 0.3,
-      weight: 2.9,
-    },
-    {
-      id: 11,
-      name: "Metapod",
-      types: "bug",
-      height: 0.7,
-      weight: 9.9,
-    },
-    {
-      id: 12,
-      name: "Butterfree",
-      types: ["bug", "flying"],
-      height: 1.1,
-      weight: 32,
-    },
-  ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   // Add function
   function add(pokemon) {
@@ -123,11 +38,9 @@ let pokemonRepository = (function () {
 
   // Function to show pokemon's details when the button is clicked.
   function showDetails(pokemon) {
-    console.log("id: ", pokemon.id);
-    console.log("name: ", pokemon.name);
-    console.log("type: ", pokemon.types);
-    console.log("height: ", pokemon.height);
-    console.log("weight: ", pokemon.weight);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   // Function of button's click event listener
@@ -137,19 +50,64 @@ let pokemonRepository = (function () {
     });
   }
 
+  // Function to show list of pokemons from PokeAPI server.
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          add(pokemon);
+        });
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+
+  // Function to show details of any selected pokemon.
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        // Add the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.weight = details.weight;
+        item.types = details.types;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
     showDetails: showDetails,
+    loadList: loadList,
+    loadDetails: loadDetails,
   };
 })();
 
 // Show pokemon list button on the document
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
-  // console.log(pokemon);
+/* pokemonRepository.getAll().forEach(function (pokemon) {
+   pokemonRepository.addListItem(pokemon);
+   // console.log(pokemon);
+ });
+*/
+pokemonRepository.loadList().then(function () {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
-
-// console.log(typeof pokemonRepository.getAll());
-// console.log(Object.keys(pokemonRepository.getAll()));
