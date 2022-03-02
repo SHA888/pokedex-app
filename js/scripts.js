@@ -17,19 +17,9 @@ let pokemonRepository = (function () {
   // Function to create button list of pokemons.
   function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
-    // console.log(pokemonList.innerText);
-    // pokemonList.innerText = "Pokemon List";
-    // console.log(pokemonList.innerText);
-
     let listItem = document.createElement("li");
-    // listItem.innerText = "List Item";
-    // console.log(listItem.innerText);
-
     let button = document.createElement("button");
-    // button.innerText = "Button";
     button.innerText = pokemon.name;
-    // console.log(button.innerText);
-
     button.classList.add("pokemon-name");
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
@@ -52,6 +42,10 @@ let pokemonRepository = (function () {
 
   // Function to show list of pokemons from PokeAPI server.
   function loadList() {
+    // Show loading message
+    // showLoadingMessage();
+
+    // Show list
     return fetch(apiUrl)
       .then(function (response) {
         return response.json();
@@ -72,6 +66,10 @@ let pokemonRepository = (function () {
 
   // Function to show details of any selected pokemon.
   function loadDetails(item) {
+    // Show loading message
+    // showLoadingMessage();
+
+    // Show details
     let url = item.detailsUrl;
     return fetch(url)
       .then(function (response) {
