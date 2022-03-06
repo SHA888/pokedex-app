@@ -40,19 +40,8 @@ let pokemonRepository = (function () {
     });
   }
 
-  // Function to show loading message
-  function showLoadingMessage() {
-    console.log("Loading...");
-  }
-
-  // Function to hide loading message
-  function hideLoadingMessage() {
-    console.log("Hide loading message...");
-  }
-
   // Function to show list of pokemons from PokeAPI server.
   function loadList() {
-    showLoadingMessage();
 
     // Show list
     return fetch(apiUrl)
@@ -67,7 +56,6 @@ let pokemonRepository = (function () {
           };
           add(pokemon);
         });
-        hideLoadingMessage();
       })
       .catch(function (e) {
         console.error(e);
@@ -76,7 +64,6 @@ let pokemonRepository = (function () {
 
   // Function to show details of any selected pokemon.
   function loadDetails(item) {
-    showLoadingMessage();
 
     // Show details
     let url = item.detailsUrl;
@@ -90,7 +77,7 @@ let pokemonRepository = (function () {
         item.height = details.height;
         item.weight = details.weight;
         item.types = details.types;
-      }, hideLoadingMessage())
+      })
       .catch(function (e) {
         console.error(e);
       });
@@ -103,8 +90,6 @@ let pokemonRepository = (function () {
     showDetails: showDetails,
     loadList: loadList,
     loadDetails: loadDetails,
-    showLoadingMessage: showLoadingMessage,
-    hideLoadingMessage: hideLoadingMessage,
   };
 })();
 
