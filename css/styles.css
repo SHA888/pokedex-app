@@ -10,7 +10,7 @@ body {
 .pokemon-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
 
@@ -27,6 +27,7 @@ body {
   display: inline-block;
   transition-duration: 0.4s;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 #modal-container {
@@ -61,7 +62,7 @@ body {
   background: #fff;
   padding: 15px;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   text-align: left;
 }
 
@@ -76,8 +77,16 @@ body {
 
 .modal h1 {
   margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .modal p {
   margin-bottom: 0;
+  text-align: center;
+}
+
+.modal img {
+  background: rgba(128, 128, 128, 0.5);
+  border-radius: 50%;
 }
