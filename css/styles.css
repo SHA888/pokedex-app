@@ -87,6 +87,10 @@ body {
 }
 
 .modal img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
   background: rgba(128, 128, 128, 0.5);
   border-radius: 50%;
 }
