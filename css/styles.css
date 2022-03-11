@@ -7,16 +7,19 @@ body {
   text-align: center;
 }
 
-.pokemon-name {
+.list-group {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.pokemon-list {
   padding: 16px 32px;
   width: 100%;
   display: inline-block;
-  background-color: lightblue;
-  border: 1px solid black;
   font-size: 1.1em;
-  color: black;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   transition-duration: 0.4s;
   cursor: pointer;
