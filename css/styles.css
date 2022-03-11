@@ -7,13 +7,6 @@ body {
   text-align: center;
 }
 
-.pokemon-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
-}
-
 .pokemon-name {
   padding: 16px 32px;
   width: 100%;
