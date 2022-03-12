@@ -150,11 +150,6 @@ let pokemonRepository = (function () {
 })();
 
 // Show pokemon list button on the document
-/* pokemonRepository.getAll().forEach(function (pokemon) {
-   pokemonRepository.addListItem(pokemon);
-   // console.log(pokemon);
- });
-*/
 pokemonRepository.loadList().then(function () {
   // Now the data should be loaded!
   pokemonRepository.getAll().forEach(function (pokemon) {
