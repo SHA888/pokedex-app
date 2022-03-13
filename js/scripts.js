@@ -102,7 +102,7 @@ let pokemonRepository = (function () {
     // let titleElement = document.createElement("h1");
     // titleElement.innerText = pokemon.name;
     let titleElement = $(
-      '<h1 class="text-uppercase">' + pokemon.name + "</h1>"
+      '<h1>' + pokemon.name + "</h1>"
     );
     modalTitle.append(titleElement);
 
