@@ -1,7 +1,6 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-  // let modalContainer = document.querySelector("#modal-container");
 
   // Add function
   function add(pokemon) {
@@ -85,35 +84,17 @@ let pokemonRepository = (function () {
     let modalBody = $(".modal-body");
 
     // Clear all existing modal content
-    // modalContainer.innerHTML = "";
     modalTitle.empty();
     modalBody.empty();
 
-    // let modal = document.createElement("div");
-    // modal.classList.add("modal");
-
-    // Add the new modal content
-    // let closeButtonElement = document.createElement("button");
-    // closeButtonElement.classList.add("modal-close");
-    // closeButtonElement.innerText = "Close";
-    // closeButtonElement.addEventListener("click", hideModal);
-
     // Add title element
-    // let titleElement = document.createElement("h1");
-    // titleElement.innerText = pokemon.name;
-    let titleElement = $(
-      '<h1>' + pokemon.name + "</h1>"
-    );
+    let titleElement = $("<h1>" + pokemon.name + "</h1>");
     modalTitle.append(titleElement);
 
     // Add height element
-    // let heightElement = document.createElement("p");
-    // heightElement.innerText = "Height: " + pokemon.height + " cm";
     let heightElement = $("<p>" + "Height: " + pokemon.height + " cm" + "</p>");
 
     // Add weight element
-    // let weightElement = document.createElement("p");
-    // weightElement.innerText = "Weight: " + pokemon.weight + " kg";
     let weightElement = $("<p>" + "Weight: " + pokemon.weight + " kg" + "</p>");
 
     // Add image element
