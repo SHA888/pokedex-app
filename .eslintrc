@@ -3,7 +3,9 @@
     "es6": true,
     "browser": true
   },
-  "extends": ["eslint:recomended"],
+  "extends": [
+      "eslint:recommended"
+    ],
   "rules": {
     "quotes": ["error", "single"]
   }
